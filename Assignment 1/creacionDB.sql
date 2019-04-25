@@ -5,6 +5,9 @@ CREATE TABLE Departamentos
   CONSTRAINT departamentos_pk PRIMARY KEY (id)
 );
 
+ALTER TABLE Departamentos
+  ADD codigo varchar2(2) not null;
+
 CREATE TABLE Municipios
 (
   id int not null,
@@ -12,6 +15,9 @@ CREATE TABLE Municipios
   departamento_id int not null,
   CONSTRAINT municipios_pk PRIMARY KEY (id)
 );
+
+ALTER TABLE Municipios
+  ADD codigo varchar2(5) not null;
 
 ALTER TABLE Municipios
 ADD CONSTRAINT Municipio_departamento_id_fk
