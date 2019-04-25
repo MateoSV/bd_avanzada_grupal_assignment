@@ -33,3 +33,27 @@ CREATE PROFILE operative LIMIT
    PASSWORD_LIFE_TIME         30
    PASSWORD_REUSE_TIME        30
    PASSWORD_REUSE_MAX         3;
+
+-- Punto 5
+
+create user user1
+identified by user1
+DEFAULT TABLESPACE coordinadora
+QUOTA UNLIMITED ON coordinadora;
+grant create session to user1;
+alter user user1 profile  clerk;
+
+create user user2
+identified by user2
+DEFAULT TABLESPACE coordinadora
+QUOTA UNLIMITED ON coordinadora;
+grant create session to user2;
+alter user user2 profile  development;
+
+create user user3
+identified by user3
+DEFAULT TABLESPACE coordinadora
+QUOTA UNLIMITED ON coordinadora
+ACCOUNT LOCK;
+grant create session to user3;
+alter user user3 profile  operative;
