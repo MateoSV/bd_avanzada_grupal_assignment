@@ -95,14 +95,6 @@ ALTER TABLE Empleados
 ADD CONSTRAINT empleado_CentroReciboCarga_id_fk
   FOREIGN KEY (centro_recibo_carga_id)
   REFERENCES CentroReciboCarga(centrorecibocarga_id);
-  
-CREATE TABLE Estados
-(
-  estado_id int not null,
-  nombre varchar2(255) not null,
-  entidad varchar2(255) not null,
-  CONSTRAINT estados_pk PRIMARY KEY (Estado_id)
-);
 
 CREATE TABLE Vehiculos
 (
@@ -122,30 +114,26 @@ ADD CONSTRAINT vehiculo_CentroReciboCarga_id_fk
   FOREIGN KEY (centro_recibo_carga_id)
   REFERENCES CentroReciboCarga(centrorecibocarga_id);
 
+CREATE TABLE Items
+(
+    item_id int not null,
+    nombre varchar2(255) not null,
+    CONSTRAINT items_pk PRIMARY KEY (item_id)
+);
+
 CREATE TABLE Mantenimientos
 (
   mantenimiento_id int not null,
-  vehiculo_id int not null,
-  fecha date not null,
-  hora_entrada varchar2(10) not null,
-  hora_salida varchar2(10) not null,
-  mantenimiento varchar2(20) not null,
-  empleado_id int not null,
+  nombre varchar2(100) not null,
+  kilometraje varchar2(30) not null,
   CONSTRAINT mantenimientos_pk PRIMARY KEY (mantenimiento_id)
 );
-
-ALTER TABLE Mantenimientos
-ADD CONSTRAINT mantenimiento_empleado_id_fk
-  FOREIGN KEY (empleado_id)
-  REFERENCES Empleados(empleado_id);
   
 CREATE TABLE MantenimientoDetalle
 (
   mantenimiento_id int not null,
   detalle_id int not null,
-  revision varchar2(100) not null,
-  observaciones varchar2(255),
-  estado_id int not null,
+  item_id int not null,
   CONSTRAINT mantenimientoDetalle_pk PRIMARY KEY (mantenimiento_id, detalle_id)
 );
 
@@ -153,11 +141,54 @@ ALTER TABLE MantenimientoDetalle
 ADD CONSTRAINT MantenimientoDetalle_mantenimiento_id_fk
   FOREIGN KEY (mantenimiento_id)
   REFERENCES Mantenimientos(mantenimiento_id);
-
+  
 ALTER TABLE MantenimientoDetalle
-ADD CONSTRAINT MantenimientoDetalle_estado_id_fk
-  FOREIGN KEY (estado_id)
-  REFERENCES Estados(estado_id);
+ADD CONSTRAINT MantenimientoDetalle_item_id_fk
+  FOREIGN KEY (item_id)
+  REFERENCES Items(item_id);
+  
+CREATE TABLE ProgramacionMantenimientos
+(
+    programacionMantenimiento_id int not null,
+    vehiculo_id int not null,
+    fecha date not null,
+    hora_entrada varchar2(10) not null,
+    hora_salida varchar2(10) not null,
+    empleado_id int not null,
+    mantenimiento_id int not null,
+    CONSTRAINT programacionMantenimientos_pk PRIMARY KEY (programacionMantenimiento_id)
+);
+
+ALTER TABLE ProgramacionMantenimientos
+ADD CONSTRAINT ProgramacionMantenimientos_vehiculo_id_fk
+  FOREIGN KEY (vehiculo_id)
+  REFERENCES Vehiculos(vehiculo_id);
+  
+ALTER TABLE ProgramacionMantenimientos
+ADD CONSTRAINT ProgramacionMantenimientos_empleado_id_fk
+  FOREIGN KEY (empleado_id)
+  REFERENCES Empleados(empleado_id);
+  
+ALTER TABLE ProgramacionMantenimientos
+ADD CONSTRAINT ProgramacionMantenimientos_mantenimiento_id_fk
+  FOREIGN KEY (mantenimiento_id)
+  REFERENCES Mantenimientos(mantenimiento_id);
+  
+CREATE TABLE ProgramacionMantenimientoDetalle
+(
+  programacionMantenimiento_id int not null,
+  detalle_id int not null,
+  mantenimientoDetalle_id int not null,
+  estado varchar2(100),
+  observaciones varchar2(255),
+  CONSTRAINT programacionMantenimientoDetalle_pk PRIMARY KEY (programacionMantenimiento_id, detalle_id)
+);
+
+--no da
+ALTER TABLE ProgramacionMantenimientoDetalle
+ADD CONSTRAINT ProgramacionMantenimientoDetalle_mantenimiento_detalle_id_fk
+  FOREIGN KEY (mantenimientoDetalle_id)
+  REFERENCES MantenimientoDetalle(detalle_id);
   
 CREATE TABLE Guias
 (
@@ -182,7 +213,7 @@ CREATE TABLE Guias
   flete_variable numeric(9,2) not null,
   otros_valores numeric(9,2) not null,
   valor_servicio numeric(9,2) not null,
-  estado_id int not null,
+  estado varchar2(100),
   CONSTRAINT guia_pk PRIMARY KEY (guia_id)
 );
 
@@ -215,17 +246,12 @@ ALTER TABLE Guias
 ADD CONSTRAINT guia_codigopostal_destino_id_fk
   FOREIGN KEY (codigo_postal_destino)
   REFERENCES CodigoPostal(id);
-  
-ALTER TABLE Guias
-ADD CONSTRAINT guia_estado_id_fk
-  FOREIGN KEY (estado_id)
-  REFERENCES Estados(estado_id);
 
 CREATE TABLE Rastreos
 (
   rastreo_id int not null,
   guia_id int not null,
-  estado_id int not null,
+  estado varchar2(100),
   fecha date not null,
   CONSTRAINT rastreos_pk PRIMARY KEY (rastreo_id)
 );
@@ -234,9 +260,4 @@ ALTER TABLE Rastreos
 ADD CONSTRAINT rastreo_guia_id_fk
   FOREIGN KEY (guia_id)
   REFERENCES Guias(guia_id);
-
-ALTER TABLE Rastreos
-ADD CONSTRAINT rastreo_estado_id_fk
-  FOREIGN KEY (estado_id)
-  REFERENCES Estados(estado_id);
 
