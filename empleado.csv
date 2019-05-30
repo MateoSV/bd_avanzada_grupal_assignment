@@ -1,0 +1,51 @@
+empleado_id,codigo,nombre,cedula,direccion,telefono,salario,jefedirecto,carga,Centro_recibo_carga_id
+1,Y93F9,Bengall,8408675028,28 Fremont Parkway,567-928-3593,$1.78,Arnaldo,Jewelery,1
+2,S5702XA,Boxhall,4111870708,6 Oneill Parkway,342-782-3053,$8.66,Norry,Movies,2
+3,S82256S,Pellamonuten,0023496851,6752 Morningstar Circle,841-610-3896,$3.10,Skipper,Computers,3
+4,S62395A,Scardifeild,2263304037,1 Spenser Avenue,489-701-9944,$7.62,Quinn,Music,4
+5,S52251M,Selliman,5623938507,688 Buena Vista Hill,191-586-2797,$2.72,Antone,Clothing,5
+6,S46812S,Hardwicke,2703593899,246 Muir Hill,475-879-4719,$4.01,Rod,Music,6
+7,M12332,Bardwall,2282031326,149 Warbler Park,917-997-6584,$2.40,Walt,Kids,7
+8,S82819A,Vaudrey,8144809440,8263 Village Crossing,598-582-1998,$2.94,Quinn,Sports,8
+9,S00441D,Hatzar,6451545465,29 Crownhardt Lane,117-115-3036,$6.39,Kahlil,Computers,9
+10,T364X4S,Pattle,5585329987,7 Dottie Pass,286-338-1625,$3.17,Chandler,Garden,10
+11,Y36591,Rattenberie,9784637979,08379 Lakewood Gardens Road,804-986-9555,$8.91,Boyce,Toys,11
+12,V598,Kauscher,5184623906,6608 Dunning Plaza,571-924-7430,$5.16,Dagny,Computers,12
+13,T82818A,Shiel,6874114360,5 Logan Drive,810-369-3207,$1.19,Nathanial,Music,13
+14,S62171D,Gorey,7890271603,22454 American Center,630-833-2039,$4.34,Pascal,Books,14
+15,S71109,Bondley,5127835215,0814 Scott Parkway,729-831-0141,$5.21,Mark,Music,15
+16,S62225D,Koche,2153052378,7428 Cardinal Pass,192-425-4158,$0.94,Maurits,Toys,16
+17,M868X8,McGorley,1620907623,45 Commercial Street,135-779-6504,$6.67,Arty,Electronics,17
+18,T578X2,Noon,6125885631,33872 Basil Street,441-570-8429,$3.02,Decca,Outdoors,18
+19,S95002,Joanic,8469528084,76 Oneill Road,194-890-7661,$5.61,Pryce,Games,19
+20,S52045Q,Pace,3325299660,205 Basil Alley,629-802-0274,$8.74,Brody,Automotive,20
+21,H663X3,Thrasher,4371592414,995 Ruskin Junction,232-259-5310,$3.53,Gibby,Baby,21
+22,S72061F,Basile,8121081394,94 Ilene Terrace,306-129-6861,$6.47,Dennison,Books,22
+23,O0487,Hollingby,8748813532,7142 Cambridge Alley,792-581-0718,$9.29,Bondy,Health,23
+24,M02059,Thompkins,4356762649,67478 Mockingbird Hill,947-428-7007,$1.93,Riobard,Shoes,24
+25,S56011S,Thraves,8126801662,511 Crescent Oaks Way,990-366-6862,$3.62,Otes,Games,25
+26,T523X2A,Scrowby,6525563267,4159 Orin Parkway,993-281-9771,$8.48,Doug,Games,26
+27,S9590,Shevels,3123529134,99450 Tomscot Alley,583-929-8041,$8.84,Kent,Grocery,27
+28,W400XXS,Calver,2657559425,4350 Swallow Crossing,145-957-7447,$4.86,Den,Baby,28
+29,S0631,Moakler,2946957004,87373 Mayfield Hill,387-795-1796,$5.34,Winifield,Movies,29
+30,T23712D,Treadwell,0804151180,5555 Briar Crest Parkway,443-381-0699,$4.28,Filbert,Health,30
+31,S9304XD,Scobie,9002122829,156 Laurel Court,940-660-9990,$8.13,Seymour,Beauty,31
+32,H710,Berford,1039359744,1864 Johnson Plaza,867-709-7974,$5.79,Putnem,Computers,32
+33,S79822S,Wiggington,6606333369,4308 Kensington Crossing,625-516-7731,$3.22,Skipton,Grocery,33
+34,A5901,Ellaway,5849330445,54 Wayridge Hill,311-788-8293,$9.49,Millard,Computers,34
+35,S72412G,Benne,9427295384,6359 Dahle Avenue,390-324-7719,$2.82,Irvin,Grocery,35
+36,S65099S,Stockdale,8741684818,083 Orin Junction,293-501-7403,$9.68,Nappie,Books,36
+37,S62602B,Tolerton,6795206858,8 Rowland Pass,505-267-0051,$2.96,Taddeo,Games,37
+38,S062X8D,Romaint,7926119423,81616 Jay Park,723-557-7421,$1.38,Renault,Garden,38
+39,T25339A,Bonnell,3730444131,06 Northwestern Court,939-446-0430,$5.75,Ansel,Electronics,39
+40,Q438,Ginnally,8693679708,29 Mccormick Place,306-739-6332,$4.35,Alfons,Tools,40
+41,S76192D,Hoofe,9208656950,49356 Reindahl Parkway,972-622-4701,$2.98,Sonny,Games,41
+42,H4053X1,Cawdery,2069106977,5354 Blackbird Point,568-178-6295,$1.95,Lovell,Industrial,42
+43,T602X4A,Masserel,2067873911,99 Warrior Park,798-732-7427,$0.66,Cortie,Jewelery,43
+44,M2673,MacGiolla,1840914769,3523 Sheridan Terrace,366-396-5709,$3.30,Robers,Sports,44
+45,Y36811,Newick,9485903677,806 Montana Place,697-957-6757,$9.22,Orv,Movies,45
+46,S68615,Rix,0189930969,8724 Moulton Hill,786-791-7729,$1.48,Ulrich,Music,46
+47,F1810,Klos,5213014623,6 Corry Road,591-379-3541,$8.67,Glynn,Home,47
+48,T463X3S,Purkins,0804211973,50183 Bluestem Drive,586-160-0750,$7.02,Quincey,Home,48
+49,K915,Pitchers,9269167437,12 Milwaukee Court,474-652-1312,$1.49,Shelton,Baby,49
+50,O9983,Simmins,3022059906,0 Banding Plaza,205-334-9232,$1.47,Alvin,Automotive,50
