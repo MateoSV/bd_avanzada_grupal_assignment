@@ -1,0 +1,11 @@
+vehiculo_id,marca,modelo,tipo_combustible,kilometraje,capacidad,centro_recibo_carga_id
+1,Maybach,2011,Telecommunications Equipment,57.7911244,14.2483538,1
+2,BMW,1999,Aerospace,9.1495559,39.0241756,2
+3,Ford,2010,Beverages (Production/Distribution),-37.6097143,-73.6483294,3
+4,Dodge,2011,Major Pharmaceuticals,-8.5305384,120.5766976,4
+5,GMC,2012,Real Estate Investment Trusts,45.2303117,20.2078344,5
+6,Ford,2011,Major Pharmaceuticals,2.7239834,101.9476452,6
+7,Mercedes-Benz,2000,n/a,30.081941,120.495065,7
+8,Infiniti,1995,Oil & Gas Production,41.4666138,21.1242667,8
+9,Lincoln,2011,Biotechnology: In Vitro & In Vivo Diagnostic Substances,-33.453544,-61.486922,9
+10,Ford,2006,Biotechnology: Electromedical & Electrotherapeutic Apparatus,-34.4402062,-55.9600098,10
