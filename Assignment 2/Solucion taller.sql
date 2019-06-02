@@ -137,10 +137,33 @@ END;
 
 -- Punto 6
 
-CREATE OR REPLACE VIEW precios_ciudades (ciudad)
+CREATE OR REPLACE VIEW precios_ciudades
 AS
     SELECT precenv.destino_id, mun.Nombre, precenv.precio_kilo
     FROM PrecioEnvio precenv
     INNER JOIN centroReciboCarga ON precenv.centro_recibo_id = centroReciboCarga.centroReciboCarga_id
 	INNER JOIN Municipios mun ON mun.id = centroReciboCarga.Municipio_id
-	WHERE mun.Nombre = ciudad;
+    
+-- PUNTO 7
+CREATE OR REPLACE PROCEDURE recalcular_tarifas
+IS
+    v_alto guias.alto%TYPE;
+    v_ancho guias.ancho%TYPE;
+    v_largo guias.largo%TYPE;
+    v_guia guias.guia_id%TYPE;
+    CURSOR c_guias IS SELECT guia_id, alto, ancho, largo FROM guias;
+BEGIN
+    
+    OPEN c_guias;
+    LOOP
+        FETCH c_guias INTO v_guia, v_alto, v_ancho, v_largo;
+        EXIT WHEN c_guias%notfound;
+        
+        UPDATE  guias
+        SET     volumen = v_alto * v_ancho * v_largo * 400
+        WHERE   guias.guia_id = v_guia;
+        
+    END LOOP;
+    CLOSE c_guias;
+
+END;
