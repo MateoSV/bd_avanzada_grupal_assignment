@@ -11,6 +11,73 @@ AS
     INNER JOIN items it ON mantd.item_id = it.item_id;
     
     SELECT * FROM plan_mantenimiento_detallado;
+	
+
+-- PUNTO 3
+
+CREATE OR REPLACE PROCEDURE Programar_mantenimiento(id)
+AS
+
+kilometros CentroReciboCarga.centrorecibocarga_id%TYPE;
+mantenimiento Mantenimientos%rowtype;
+resultado integer;
+centroReciboCarga Vehiculos.CentroReciboCarga_id%TYPE;
+empleado Empleados.Empleado_id%TYPE;
+
+CURSOR mantenimientos IS SELECT id,Kilometros FROM Mantenimientos;
+CURSOR mantenimientos_detalle IS SELECT Detalle_id,Mantenimiento_id FROM MantenimientoDetalle;
+
+BEGIN
+SELECT Kilometraje,CentroReciboCarga_id INTO kilometros,centroReciboCarga FROM Vehiculos WHERE vehiculo_id = id;
+
+SELECT Empleado_id into empleado from Empleados where CentroReciboCarga_id =  centroReciboCarga AND Cargo = "Mecanico";
+OPEN mantenimientos;
+    LOOP
+        FETCH mantenimientos INTO mantenimiento;
+        EXIT WHEN mantenimientos%notfound;
+		
+		resultado = mantenimiento.Kilometros - kilometros;
+		
+		IF resultado >= 0 AND resultado <= 200 THEN
+		
+			
+		
+			INSERT INTO ProgramacionMantenimiento(Vehiculo_id, fecha, Empleado_id,Mantenimiento_id)
+            VALUES (id, SYSDATE + 2, empleado,mantenimiento.id);
+			
+			SELECT id into mant_id FROM ProgramacionMantenimiento WHERE Vehiculo_id = id AND MantenimientoDetalle_Id = mantenimiento.id;
+			
+			OPEN mantenimientos_detalle;	
+				LOOP
+					FETCH mantenimientos_detalle INTO detalle;
+					EXIT WHEN mantenimientos_detalle%notfound;
+					
+					
+					INSERT INTO ProgramacionMantenimientoDetalle(ProgramacionMantenimiento_id,Detalle_id, MantenimientoDetalle_Id, Estado)
+					VALUES (mant_id, mantenimientos_detalle.Detalle_id, mantenimientos_detalle.Mantenimiento_id,mantenimiento.id,'Pendiente');
+				END LOOP;
+			CLOSE mantenimientos_detalle
+		END IF
+		
+	END LOOP;
+CLOSE mantenimientos;
+
+EXCEPTION
+    WHEN id <= 0 THEN
+    dbms_output.put_line('Id Not Valid');
+
+END;
+
+-- Punto 4
+
+CREATE OR REPLACE TRIGGER update_vehicles_km
+AFTER UPDATE
+   ON vehiculos
+   FOR EACH ROW
+
+BEGIN
+   EXEC Programar_mantenimiento(:new.Vehiculo_id);
+END;
     
 --PUNTO 5
 CREATE TABLE PrecioEnvio
@@ -67,3 +134,13 @@ BEGIN
     CLOSE centros_recibo;
 
 END;
+
+-- Punto 6
+
+CREATE OR REPLACE VIEW precios_ciudades (ciudad)
+AS
+    SELECT precenv.destino_id, mun.Nombre, precenv.precio_kilo
+    FROM PrecioEnvio precenv
+    INNER JOIN centroReciboCarga ON precenv.centro_recibo_id = centroReciboCarga.centroReciboCarga_id
+	INNER JOIN Municipios mun ON mun.id = centroReciboCarga.Municipio_id
+	WHERE mun.Nombre = ciudad;
